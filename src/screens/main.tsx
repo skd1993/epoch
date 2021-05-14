@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { StyleSheet, ScrollView, View, Text, ViewStyle, TextInput, TextStyle, ToastAndroid, Alert, TouchableOpacity, Platform } from 'react-native';
 import Clipboard from 'expo-clipboard';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
@@ -15,6 +16,7 @@ type Style = {
   subTextStyle: TextStyle,
   inputContainer: ViewStyle,
   inputContent: TextStyle,
+  pickerButtonStyle: TextStyle,
 }
 
 const Main = (): JSX.Element => {
@@ -98,20 +100,21 @@ const Main = (): JSX.Element => {
       <Card title="Epoch Converter">
         <Fragment>
           <View style={styles.cardContent}>
-            <View style={styles.inputContainer}>
-              <TextInput style={styles.inputContent} placeholder="Enter Epoch Value" keyboardType="numeric" value={datePickerVal?.getTime().toString()} onChangeText={epochInputChangeHandler}></TextInput>
+            <View style={[styles.inputContainer, { flexDirection: 'row' }]}>
+              <TextInput style={styles.inputContent} placeholder="Enter Epoch Value" keyboardType="numeric" value={datePickerVal?.getTime().toString()} maxLength={15} onChangeText={epochInputChangeHandler}></TextInput>
+              {datePickerVal && <TouchableOpacity onPress={() => setDatePickerVal(undefined)}><View style={{ alignItems: 'center' }}><MaterialIcons name='clear' size={25} color='#7f8c8d' /></View></TouchableOpacity>}
             </View>
             <View style={{ height: 10 }}></View>
             <View style={{ flexDirection: 'row' }}>
               <View style={[styles.inputContainer, { flex: 1 }]}>
                 <TouchableOpacity onPress={showDatepicker}>
-                  <Text style={{ fontSize: 14, textAlign: 'center', color: '#7f8c8d' }}>{datePickerVal ? datePickerVal.toDateString() : 'Select Date'}</Text>
+                  <Text style={styles.pickerButtonStyle}>{datePickerVal ? datePickerVal.toDateString() : 'Select Date'}</Text>
                 </TouchableOpacity>
               </View>
               <View style={{ width: 10 }}></View>
               <View style={[styles.inputContainer, { flex: 1 }]}>
                 <TouchableOpacity onPress={showTimepicker}>
-                  <Text style={{ fontSize: 14, textAlign: 'center', color: '#7f8c8d' }}>{datePickerVal ? datePickerVal.toTimeString() : 'Select Time'}</Text>
+                  <Text style={styles.pickerButtonStyle}>{datePickerVal ? datePickerVal.toTimeString() : 'Select Time'}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -170,6 +173,9 @@ const styles = StyleSheet.create<Style>({
     textAlign: 'center',
     color: '#000000'
   },
+  pickerButtonStyle: {
+    fontSize: 14, textAlign: 'center', color: '#7f8c8d'
+  }
 });
 
 export default Main;

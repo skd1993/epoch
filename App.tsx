@@ -2,8 +2,7 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { StackNavigationOptions } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 
 import {
@@ -41,7 +40,7 @@ export default function App() {
   else {
     return (
       <NavigationContainer>
-        <StatusBar style="auto" />
+        <StatusBar style="light" />
         <Stack.Navigator initialRouteName="Main">
           <Stack.Screen name="E P O C H" component={Main} options={screenOptions} />
           <Stack.Screen name="About" component={About} />

@@ -9,14 +9,17 @@ interface IButtonBasicProps {
   buttonStyle?: ViewStyle
   icon?: string,
   title?: string,
+  iconStyle?: TextStyle,
 }
 
 interface IButtonWithTitle extends IButtonBasicProps {
   title: string;
+  textStyle?: TextStyle;
 }
 
 interface IButtonWithIcon extends IButtonBasicProps {
-  icon: string,
+  icon: string;
+  iconStyle?: TextStyle;
 }
 
 type ButtonProps = IButtonWithTitle | IButtonWithIcon;
@@ -24,11 +27,12 @@ type ButtonProps = IButtonWithTitle | IButtonWithIcon;
 type Style = {
   buttonView: ViewStyle,
   buttonText: TextStyle,
-  mainContainer: ViewStyle
+  mainContainer: ViewStyle,
+  buttonIcon: TextStyle,
 }
 
 const CustomButton = (props: ButtonProps): JSX.Element => {
-  const { title, onPress, buttonContainerStyle, textStyle, buttonStyle, icon } = props;
+  const { title, onPress, buttonContainerStyle, textStyle, buttonStyle, icon, iconStyle } = props;
 
   return (
     <View style={{ ...styles.mainContainer, ...buttonContainerStyle }}>
@@ -36,8 +40,10 @@ const CustomButton = (props: ButtonProps): JSX.Element => {
         onPress={onPress}
         style={{ ...styles.buttonView, ...buttonStyle }}
       >
-        {title && <Text style={{ ...styles.buttonText, ...textStyle }}>{title}</Text>}
-        {icon && <MaterialIcons style={{textAlign: 'center'}} name={icon} size={25} />}
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          {title && <Text style={{ ...styles.buttonText, ...textStyle }}>{title}</Text>}
+          {icon && <><View style={{ width: 3 }}></View><MaterialIcons style={{ ...styles.buttonIcon, ...iconStyle }} name={icon} /></>}
+        </View>
       </Pressable>
     </View>
   );
@@ -49,13 +55,14 @@ const styles = StyleSheet.create<Style>({
     borderRadius: 12,
     paddingVertical: 15,
     paddingHorizontal: 10,
-    marginHorizontal: 2,
+    marginHorizontal: 0,
     backgroundColor: '#008080',
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonText: { color: '#eee', textAlign: 'center', fontSize: 15 },
   mainContainer: { flex: 1, marginTop: 10, minHeight: 50 },
+  buttonIcon: { textAlign: 'center', color: '#eee', fontSize: 22 },
 });
 
 export default CustomButton;

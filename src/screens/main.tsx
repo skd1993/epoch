@@ -1,8 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { StyleSheet, ScrollView, View, Text, ViewStyle, TextInput, TextStyle, ToastAndroid, Alert, TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, ViewStyle, TextInput, TextStyle, ToastAndroid, Linking, TouchableOpacity, Platform, Share } from 'react-native';
 import Clipboard from 'expo-clipboard';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { MaterialIcons } from '@expo/vector-icons';
+import Constants from "expo-constants"
 
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
@@ -130,9 +131,45 @@ const Main = (): JSX.Element => {
                 );
               }} icon="content-copy" /></Fragment>}
             </View>
+            {/* <View style={{ flexDirection: 'row' }}>
+              <CustomButton onPress={() => {}} icon='share' buttonContainerStyle={{flex: 1}} buttonStyle={{backgroundColor: '#651FFF'}} title="Share" />
+              <View style={{ width: 5 }}></View>
+              <CustomButton onPress={() => {}} icon='cake' buttonContainerStyle={{flex: 2}} buttonStyle={{backgroundColor: '#d50000'}} title="Wish Birthday" />
+            </View> */}
           </View>
         </Fragment>
       </Card>
+      <View style={[styles.cardContent, { flexDirection: 'row', flexWrap: 'wrap' }]}>
+        <Text onPress={() => {
+          Linking.openURL(
+            'mailto:kbcsupervoid@gmail.com?subject=Feedback for Epoch'
+          )
+        }} style={{ color: '#651FFF', fontWeight: 'bold' }}>CONTACT</Text>
+        <View style={{ width: 25, alignItems: 'center' }}><Text>|</Text></View>
+        <Text onPress={() => {
+          Linking.openURL(
+            'https://play.google.com/store/search?q=pub:SuperVoid&c=apps',
+          )
+        }} style={{ color: '#651FFF', fontWeight: 'bold' }}>MORE APPS</Text>
+        <View style={{ width: 25, alignItems: 'center' }}><Text>|</Text></View>
+        <Text onPress={() => {
+          Linking.openURL(
+            'https://play.google.com/store/apps/details?id=com.norelapse',
+          )
+        }} style={{ color: '#651FFF', fontWeight: 'bold' }}>REVIEW</Text>
+        <View style={{ width: 25, alignItems: 'center' }}><Text>|</Text></View>
+        <Text onPress={() => {
+          Share.share({
+            title: 'No Relapse',
+            message: 'Hey, check out this Epoch app, it is super cool and ad-free! Download here https://play.google.com/store/apps/details?id=com.norelapse'
+          })
+        }} style={{ color: '#651FFF', fontWeight: 'bold' }}>SHARE</Text>
+      </View>
+      <View style={[styles.cardContent, { flexDirection: 'row', flexWrap: 'wrap' }]}>
+        <Text style={{ color: '#999' }}>Created by SuperVoid</Text>
+        <View style={{ width: 25, alignItems: 'center' }}><Text>|</Text></View>
+        <Text style={{ color: '#999' }}>v{Constants.manifest.version}</Text>
+      </View>
     </ScrollView >
   )
 }

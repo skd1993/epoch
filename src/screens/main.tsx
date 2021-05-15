@@ -154,14 +154,14 @@ const Main = (): JSX.Element => {
         <View style={{ width: 25, alignItems: 'center' }}><Text>|</Text></View>
         <Text onPress={() => {
           Linking.openURL(
-            'https://play.google.com/store/apps/details?id=com.norelapse',
+            'https://play.google.com/store/apps/details?id=com.supervoid.epoch',
           )
         }} style={{ color: '#651FFF', fontWeight: 'bold' }}>REVIEW</Text>
         <View style={{ width: 25, alignItems: 'center' }}><Text>|</Text></View>
         <Text onPress={() => {
           Share.share({
             title: 'No Relapse',
-            message: 'Hey, check out this Epoch app, it is super cool and ad-free! Download here https://play.google.com/store/apps/details?id=com.norelapse'
+            message: 'Hey, check out this Epoch app, it is super cool and ad-free! Download here https://play.google.com/store/apps/details?id=com.supervoid.epoch'
           })
         }} style={{ color: '#651FFF', fontWeight: 'bold' }}>SHARE</Text>
       </View>

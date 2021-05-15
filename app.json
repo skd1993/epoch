@@ -23,7 +23,8 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.supervoid.epoch",
-      "versionCode": 1
+      "versionCode": 1,
+      "enableDangerousExperimentalLeanBuilds": true
     },
     "web": {
       "favicon": "./assets/favicon.png"

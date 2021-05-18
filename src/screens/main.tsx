@@ -101,9 +101,9 @@ const Main = (): JSX.Element => {
       <Card title="Epoch Converter">
         <Fragment>
           <View style={styles.cardContent}>
-            <View style={[styles.inputContainer, { flexDirection: 'row' }]}>
+            <View style={[styles.inputContainer, { flexDirection: 'row', alignItems: 'center' }]}>
               <TextInput style={styles.inputContent} placeholder="Enter Epoch Value" keyboardType="numeric" value={datePickerVal?.getTime().toString()} maxLength={15} onChangeText={epochInputChangeHandler}></TextInput>
-              {datePickerVal && <TouchableOpacity onPress={() => setDatePickerVal(undefined)}><View style={{ alignItems: 'center' }}><MaterialIcons name='clear' size={25} color='#7f8c8d' /></View></TouchableOpacity>}
+              {datePickerVal && <TouchableOpacity onPress={() => setDatePickerVal(undefined)}><View><MaterialIcons name='clear' size={25} color='#7f8c8d' /></View></TouchableOpacity>}
             </View>
             <View style={{ height: 10 }}></View>
             <View style={{ flexDirection: 'row' }}>
@@ -200,7 +200,7 @@ const styles = StyleSheet.create<Style>({
   inputContainer: {
     backgroundColor: '#ecf0f1',
     marginVertical: 0,
-    padding: 15,
+    padding: 12,
     borderRadius: 12,
     width: '100%',
     justifyContent: 'center'

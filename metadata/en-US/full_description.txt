@@ -1,0 +1,5 @@
+(1) Shows current unix Epoch & date/time/timezone 
+(2) Generate a random epoch 
+(3) Convert epoch to date/time 
+(4) Convert date/time to epoch value 
+(5) Copy to clipboard

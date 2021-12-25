@@ -216,7 +216,7 @@ const Main = (): JSX.Element => {
       <View style={[styles.cardContent, { flexDirection: 'row', flexWrap: 'wrap' }]}>
         <Text style={{ color: '#999' }}>Created by SuperVoid</Text>
         <View style={{ width: 25, alignItems: 'center' }}><Text>|</Text></View>
-        <Text style={{ color: '#999' }}>v{Constants.manifest.version}</Text>
+        <Text style={{ color: '#999' }}>v{Constants.nativeAppVersion}</Text>
       </View>
     </ScrollView >
   )
